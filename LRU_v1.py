@@ -106,7 +106,7 @@ class LRU:
         """
         if key in self.map:
             self._move_to_head(self.map[key])
-            return []  # pas d'éviction due à "réécriture" (sauf si tu veux forcer check)
+            return []  # pas d'éviction due à "réécriture"
         node = _Node(key=key)
         self.map[key] = node
         self._add_to_head(node)
@@ -137,7 +137,7 @@ class LRU:
         del self.map[key]
         return True
 
-    # Optionnel: pour debug / affichage
+    # Optionnel
     def keys_mru_to_lru(self) -> List[str]:
         out: List[str] = []
         cur = self.head

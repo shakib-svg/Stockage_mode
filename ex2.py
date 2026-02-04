@@ -18,10 +18,7 @@ class Mem:
 
     def create(self) -> None:
         """Crée/ouvre une connexion client memcached."""
-        # D'après la doc, Client accepte host/tuple; get retourne des bytes. :contentReference[oaicite:3]{index=3}
         self.client = Client((self.host, self.port), connect_timeout=1, timeout=1)
-
-        # Petit test de connectivité (optionnel mais pratique)
         ok = self.client.set("__ping__", b"1", expire=5)
         if not ok:
             raise RuntimeError("Connexion memcached: set() a échoué (serveur down ?)")
