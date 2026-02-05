@@ -5,14 +5,12 @@ from dataclasses import dataclass
 from typing import Optional, Dict, List
 import memcache  
 
-
 # LRU (liste doublement chaînée)
 @dataclass
 class _Node:
     key: str
     prev: Optional["_Node"] = None
     next: Optional["_Node"] = None
-
 
 class LRU:
     """
@@ -110,8 +108,6 @@ class LRU:
             cur = cur.next
         return out
 
-
-
 # Mem + LRU
 
 class Mem:
@@ -179,8 +175,6 @@ def show_image_from_bytes(image_data: bytes) -> None:
     plt.imshow(img)
     plt.axis("off")
     plt.show()
-
-
 
 def main() -> None:
     I = "./I.png"
